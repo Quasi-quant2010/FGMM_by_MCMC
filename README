@@ -1,0 +1,33 @@
+崩壊サンプリングを用いたGMMパラメータ推定
+
+    [argmemts]
+    iterations : mcmcを実行する回数
+    N_int : the number of data
+    K_int : the number of cluster
+    mps : the number of cluster paramters
+    precision : gmm 1/sigma^2
+    alpha : hyperprameters for mean
+    mean_0, precision_0
+    mu_lower : 
+    mu_higher :
+    
+    [Index]
+    K_int : the number of classes
+    N_int : the number of datas
+
+    [Parameters]
+    z_iteration_n : the class label k for the data x_i (iteration=1,...,iteratons, n=1,...,N)
+    p_z_i_k : the probability that z_i takes part in the class k (iterationに対し、リストを作成)
+    pi_iteration_k : The Weight For the class k over the class K, p(z_i=k|pai), (iteratons, k=1,...,K)
+    theta_iteration_k : the parameter vector for the class k, (iteration=1,...,iteratons, k=1,...,K)
+    alpha : the hyperparameters for p, in this process fixed
+    beta : the hyper parameters for theta, in this process fixed
+
+    [storage]
+    z : matrix(iterations*N) : the latent classes
+    x : vector(1*N) : the observed datas(N)
+    p_z_i_k : vector(1:N) : the probability that z_i takes part in the class k
+    n : vector(1*K) : p(x|pai) = \PI_{k=1}^{K} pai_k^{n_k}
+    pi : matrix(1*K) : the mixing weight for each cluster k
+    theta : matrix(iterations*mps) : the cluster parameters for each iterations
+    lh ; vector(1*iterations) : likelihood, \sum_{k=1}^{K}
